@@ -18,6 +18,9 @@ F2: Toggle whether mpv window can be resized or repositioned
 
 F3: Reset mpv window
 
+
+Only for non-simplified version:
+
 F4: Toggle mpv window transparency
 
 F5: Toggle cursor visibility, this is especially useful for certain games that have issues when in borderless mode (e.g. Monster Hunter: World)
