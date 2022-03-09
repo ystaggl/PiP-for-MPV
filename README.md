@@ -1,6 +1,9 @@
 # PiP-for-MPV
 A script that allows MPV to run in Picture-in-Picture mode, with other quality of life functionality
 
+# Usage
+Runs as a separate to MPV, just run the exe (or ahk, if you have AutoHotKey installed) file, and it should work immediately
+
 # Functions
 F1: Put mpv in Picture-in-Picture mode
 
