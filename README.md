@@ -19,7 +19,7 @@ F2: Toggle whether mpv window can be resized or repositioned
 F3: Reset mpv window
 
 
-Only for non-simplified version:
+# Only for non-simplified version:
 
 F4: Toggle mpv window transparency
 
