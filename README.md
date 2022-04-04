@@ -4,6 +4,8 @@ A script that allows MPV to run in Picture-in-Picture mode, with other quality o
 # Usage
 Runs as a separate to MPV, just run the exe (or ahk, if you have AutoHotKey installed) file, and it should work immediately
 
+Simply press the hotkeys while scroll lock is on to run the respective scripts
+
 # Versions
 There are two versions, the simplified version and the full version. 
 
