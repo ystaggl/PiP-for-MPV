@@ -31,6 +31,8 @@ SystemCursor(OnOff=1)   ; INIT = "I","Init"; OFF = 0,"Off"; TOGGLE = -1,"T","Tog
         DllCall( "SetSystemCursor", "Ptr",h_cursor, "UInt",c%A_Index% )
     }
 }
+OnExit(Exitfunc)
+#If GetKeyState("ScrollLock", "T")
 
 F1::
 WinGetActiveTitle, LastWin
@@ -50,15 +52,15 @@ F2::
 Switch ThickFrame
 {
 Case 0:
-	WinGetActiveTitle, LastWin
-	Winset, Style, +0x40000, ahk_class mpv
-	ThickFrame := 1
+    WinGetActiveTitle, LastWin
+    Winset, Style, +0x40000, ahk_class mpv
+    ThickFrame := 1
 Case 1:
-	Winset, Style, -0x40000, ahk_class mpv
-	ThickFrame := 0
-	WinActivate, %LastWin%
+    Winset, Style, -0x40000, ahk_class mpv
+    ThickFrame := 0
+    WinActivate, %LastWin%
 default:
-	ThickFrame := 1
+    ThickFrame := 1
 }
 
 return
@@ -77,13 +79,13 @@ F4::
 Switch Transparent
 {
 Case 0:
-	WinSet, Transparent, 120, ahk_class mpv
-	Transparent := 1
+    WinSet, Transparent, 120, ahk_class mpv
+    Transparent := 1
 Case 1:
-	WinSet, Transparent, Off, ahk_class mpv
-	Transparent := 0
+    WinSet, Transparent, Off, ahk_class mpv
+    Transparent := 0
 default:
-	Transparent := 1
+    Transparent := 1
 }
 return
 
@@ -102,29 +104,34 @@ return
 F7::
 if KeepWinZRunning  ; This means an underlying thread is already running the loop below.
 {
+    Run, colour_control.py "SetLighting" "0" "66" "100"
+    Sleep, (100)
+    Run, colour_control.py "Shutdown"
     KeepWinZRunning := false  ; Signal that thread's loop to stop.
     return  ; End this thread so that the one underneath will resume and see the change made by the line above.
 }
 ; Otherwise:
 KeepWinZRunning := true
+Run, colour_control.py "Init"
+Run, colour_control.py "LightSingleKey" "F7" "100" "0" "0"
 Loop
 {
     ; The next four lines are the action you want to repeat (update them to suit your preferences):
-	WinWaitClose, ahk_class mpv
-	ControlSend, ahk_parent, ^n, Taiga
-	WinWait, ahk_class mpv
-	WinGetActiveTitle, LastWin
-	WinActivate, ahk_class mpv
-	Winset, AlwaysOnTop, On, ahk_class mpv
-	Winset, Style, -0x800000, ahk_class mpv
-	Winset, Style, -0x400000, ahk_class mpv
-	Winset, Style, -0x80000, ahk_class mpv
-	Winset, Style, -0x40000, ahk_class mpv
-	Winset, Redraw,, ahk_class mpv
-	WinMove, ahk_class mpv,, 1356, 691, 520, 298 
-	WinActivate, %LastWin%
-	ThickFrame := 0
-	Transparent := 0
+    WinWaitClose, ahk_class mpv
+    ControlSend, ahk_parent, ^n, Taiga
+    WinWait, ahk_class mpv
+    WinGetActiveTitle, LastWin
+    WinActivate, ahk_class mpv
+    Winset, AlwaysOnTop, On, ahk_class mpv
+    Winset, Style, -0x800000, ahk_class mpv
+    Winset, Style, -0x400000, ahk_class mpv
+    Winset, Style, -0x80000, ahk_class mpv
+    Winset, Style, -0x40000, ahk_class mpv
+    Winset, Redraw,, ahk_class mpv
+    WinMove, ahk_class mpv,, 1356, 691, 520, 298 
+    WinActivate, %LastWin%
+    ThickFrame := 0
+    Transparent := 0
     ; But leave the rest below unchanged.
     if not KeepWinZRunning  ; The user signaled the loop to stop by pressing Win-Z again.
         break  ; Break out of this loop.
@@ -136,11 +143,17 @@ F8::
 Switch HideTaiga
 {
 Case 0:
-	WinShow, ahk_class TaigaMainW
-	HideTaiga := 1
+    WinShow, ahk_class TaigaMainW
+    HideTaiga := 1
 Case 1:
-	WinHide, ahk_class TaigaMainW
-	HideTaiga := 0
+    WinHide, ahk_class TaigaMainW
+    HideTaiga := 0
 default:
-	HideTaiga := 1
+    HideTaiga := 1
 }
+
+Exitfunc:
+Run, colour_control.py "SetLighting" "0" "66" "100"
+Sleep, (100)
+Run, colour_control.py "Shutdown"
+ExitApp
