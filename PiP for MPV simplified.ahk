@@ -31,6 +31,7 @@ SystemCursor(OnOff=1)   ; INIT = "I","Init"; OFF = 0,"Off"; TOGGLE = -1,"T","Tog
         DllCall( "SetSystemCursor", "Ptr",h_cursor, "UInt",c%A_Index% )
     }
 }
+#If GetKeyState("ScrollLock", "T")
 
 F1::
 WinGetActiveTitle, LastWin
