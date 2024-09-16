@@ -2,7 +2,7 @@
 A script that allows MPV to run in Picture-in-Picture mode, with other quality of life functionality
 
 # Usage
-Runs as a separate to MPV, just run the exe (or ahk, if you have AutoHotKey installed) file, and it should work immediately
+Runs separately to MPV, just run the exe (or .py), and it should work immediately
 
 Simply press the hotkeys while scroll lock is on to run the respective scripts
 
@@ -11,7 +11,7 @@ There are two versions, the simplified version and the full version.
 
 The simplified version only has the F1, F2 and F3 functions, use whichever you prefer
 
-If there are certain functions you want to disable, download the .ahk file, open it with a text editor, and add a \# symbol before the function (e.g. to disable F8, change line 135 from F8:: to \#F8::)
+If there are certain functions you want to disable, download the .py file, open it with a text editor, and add a \# symbol before the function (e.g. to disable F8, change line 135 from F8:: to \#F8::)
 
 # Functions
 F1: Put mpv in Picture-in-Picture mode
