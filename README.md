@@ -1,34 +1,18 @@
 # PiP-for-MPV
-A script that allows MPV to run in Picture-in-Picture mode, with other quality of life functionality
+A script that allows MPV to run in Picture-in-Picture mode, with other quality of life functionality.
+This project is deprecated. It started as one of my early AutoHotKey scripts which I eventually converted into python when I was first learning the langugae.
+As such, the code is terrible and more importantly, the project is obsolete, as most of the functions are already supported by mpv natively, just by making changes to the input.ini file.
 
 # Usage
 Runs separately to MPV, just run the exe (or .py), and it should work immediately
 
 Simply press the hotkeys while scroll lock is on to run the respective scripts
 
-# Versions
-There are two versions, the simplified version and the full version. 
-
-The simplified version only has the F1, F2 and F3 functions, use whichever you prefer
-
-If there are certain functions you want to disable, download the .py file, open it with a text editor, and add a \# symbol before the function (e.g. to disable F8, change line 135 from F8:: to \#F8::)
-
 # Functions
-F1: Put mpv in Picture-in-Picture mode
+F1: Toggle whether the mpv window has a border for resizing
 
-F2: Toggle whether mpv window can be resized or repositioned
+F2: Set mpv to a Picture-in-Picture window.
 
-F3: Reset mpv window
+F3: Reset mpv to a normal window.
 
-
-# Only for non-simplified version:
-
-F4: Toggle mpv window transparency
-
-F5: Toggle cursor visibility, this is especially useful for certain games that have issues when in borderless mode (e.g. Monster Hunter: World)
-
-F6: If using Taiga (taiga.moe), plays next episode
-
-F7: If using Taiga (taiga.moe), Toggles whether next episode should autoplay
-
-F8: If using Taiga (taiga.moe), Toggles whether taiga should be hidden
+F4: Toggle Autoplay
